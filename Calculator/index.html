@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-gray-900 flex justify-center items-center p-6">
+
+    <!-- Calculator -->
+    <div class="w-[380px] bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-7 shadow-[0_25px_60px_rgba(0,0,0,0.6)]">
+
+        <!-- Title -->
+        <h1 class="text-center text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-6 tracking-wide">
+            Calculator
+        </h1>
+
+        <!-- Display -->
+        <input
+            type="text"
+            id="display"
+            readonly
+            placeholder="0"
+            class="w-full h-20 rounded-2xl bg-slate-900 border border-slate-700 text-white text-right text-4xl font-semibold px-5 mb-6 outline-none shadow-inner tracking-wider"
+        >
+
+        <!-- Buttons -->
+        <div class="grid grid-cols-4 gap-4">
+
+            <!-- Row 1 -->
+            <button onclick="clearDisplay()"
+                class="h-16 rounded-2xl bg-red-500 hover:bg-red-400 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                AC
+            </button>
+
+            <button onclick="deleteLast()"
+                class="h-16 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                ⌫
+            </button>
+
+            <button onclick="append('%')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                %
+            </button>
+
+            <button onclick="append('/')"
+                class="h-16 rounded-2xl bg-orange-500 hover:bg-orange-400 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                ÷
+            </button>
+
+            <!-- Row 2 -->
+            <button onclick="append('7')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                7
+            </button>
+
+            <button onclick="append('8')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                8
+            </button>
+
+            <button onclick="append('9')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                9
+            </button>
+
+            <button onclick="append('*')"
+                class="h-16 rounded-2xl bg-orange-500 hover:bg-orange-400 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                ×
+            </button>
+
+            <!-- Row 3 -->
+            <button onclick="append('4')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                4
+            </button>
+
+            <button onclick="append('5')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                5
+            </button>
+
+            <button onclick="append('6')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                6
+            </button>
+
+            <button onclick="append('-')"
+                class="h-16 rounded-2xl bg-orange-500 hover:bg-orange-400 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                −
+            </button>
+
+            <!-- Row 4 -->
+            <button onclick="append('1')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                1
+            </button>
+
+            <button onclick="append('2')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                2
+            </button>
+
+            <button onclick="append('3')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                3
+            </button>
+
+            <button onclick="append('+')"
+                class="h-16 rounded-2xl bg-orange-500 hover:bg-orange-400 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                +
+            </button>
+
+            <!-- Row 5 -->
+            <button onclick="append('0')"
+                class="col-span-2 h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                0
+            </button>
+
+            <button onclick="append('.')"
+                class="h-16 rounded-2xl bg-slate-700 hover:bg-slate-600 text-white text-xl font-bold transition duration-200 active:scale-95 shadow-md">
+                .
+            </button>
+
+            <button onclick="calculate()"
+                class="h-16 rounded-2xl bg-emerald-500 hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.8)] text-white text-xl font-bold transition duration-200 active:scale-95 shadow-lg">
+                =
+            </button>
+
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-slate-400 text-sm mt-6">
+            Made with ❤️ by <span class="text-cyan-400 font-semibold">Cyrus Daniel Madriaga</span>
+        </p>
+
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
