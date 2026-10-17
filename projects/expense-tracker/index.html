@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expense Tracker — Cyrus Daniel Madriaga</title>
+<meta name="description" content="Track daily spending in pesos: add expenses by category, watch the total update, and see the breakdown in the category bars. Saved in localStorage.">
+<meta name="theme-color" content="#070B14">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2338BDF8'/%3E%3Cstop offset='1' stop-color='%230284C7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial, sans-serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  (function () {
+    try {
+      var saved = localStorage.getItem("cdm-theme");
+      var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+      document.documentElement.dataset.theme = saved || (prefersLight ? "light" : "dark");
+    } catch (e) {
+      document.documentElement.dataset.theme = "dark";
+    }
+  })();
+</script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="page-bar">
+  <a class="page-back" href="../../index.html#projects">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+    All projects
+  </a>
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme">
+    <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+  </button>
+</header>
+
+<main class="page">
+  <h1 class="page-title">Expense Tracker</h1>
+  <p class="page-lede">Track daily spending in pesos: add expenses by category, watch the total update, and see the breakdown in the category bars. Saved in <span class="mono">localStorage</span>.</p>
+
+  <section class="stage">
+    <div class="demo-stage" id="exDemo">
+      <form class="ex-form" id="exForm" autocomplete="off">
+        <input class="ex-name" type="text" id="exName" placeholder="What did you buy?" aria-label="Expense name" required>
+        <input type="number" id="exAmount" placeholder="Amount (₱)" aria-label="Amount in pesos" min="1" step="0.01" required>
+        <select id="exCat" aria-label="Category">
+          <option value="food">Food</option>
+          <option value="transport">Transport</option>
+          <option value="school">School</option>
+          <option value="fun">Fun</option>
+        </select>
+        <button class="ex-add" type="submit">Add</button>
+      </form>
+      <div class="ex-total"><span>Total spent</span><b id="exTotal">₱0</b></div>
+      <ul class="ex-list" id="exList"></ul>
+      <div class="ex-bars" id="exBars"></div>
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    <p>Made with ♥ by <a href="../../index.html">Cyrus Daniel Madriaga</a></p>
+    <a href="https://github.com/diamondzya/portfolio/tree/main/projects/expense-tracker">View the source</a>
+  </footer>
+</main>
+
+<script src="script.js"></script>
+<script>
+  /* page chrome: theme toggle, sharing the same preference as the portfolio */
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById("themeToggle");
+    var meta = document.querySelector('meta[name="theme-color"]');
+
+    function label() {
+      var goingTo = root.dataset.theme === "dark" ? "light" : "dark";
+      btn.setAttribute("aria-label", "Switch to " + goingTo + " theme");
+      if (meta) meta.setAttribute("content", root.dataset.theme === "dark" ? "#070B14" : "#E8F0FA");
+    }
+    label();
+
+    btn.addEventListener("click", function () {
+      var next = root.dataset.theme === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("cdm-theme", next); } catch (e) {}
+      label();
+    });
+  })();
+</script>
+</body>
+</html>

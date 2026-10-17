@@ -20,6 +20,7 @@
 </script>
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2338BDF8'/%3E%3Cstop offset='1' stop-color='%230284C7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='32' y='44' font-family='Arial, sans-serif' font-size='36' font-weight='bold' fill='white' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#070B14">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -293,6 +294,26 @@ a { color: var(--accent); }
 }
 .lede strong { color: var(--ink); font-weight: 600; }
 
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  margin-bottom: 26px;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 0 3px var(--ok-soft);
+}
+
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .btn {
@@ -324,6 +345,7 @@ a { color: var(--accent); }
 .rise { opacity: 0; animation: rise 0.7s cubic-bezier(0.22, 0.9, 0.3, 1) forwards; }
 .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.14s; } .d3 { animation-delay: 0.22s; }
 .d4 { animation-delay: 0.32s; } .d5 { animation-delay: 0.42s; } .d6 { animation-delay: 0.52s; }
+.d7 { animation-delay: 0.62s; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -495,6 +517,42 @@ a { color: var(--accent); }
   background: var(--surface-2);
 }
 
+.proj-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.proj-filters button {
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink-2);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.proj-filters button:hover { border-color: var(--accent); color: var(--accent); }
+.proj-filters button.is-active { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.proj.hidden { display: none; }
+
+.proj-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; }
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+.proj-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.proj-link svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ---------- shared demo bits ---------- */
 .demo-title {
   text-align: center;
@@ -535,6 +593,7 @@ a { color: var(--accent); }
 }
 .cbtn:hover { filter: brightness(1.12); }
 .cbtn:active { transform: scale(0.94); }
+.cbtn.hit { transform: scale(0.94); filter: brightness(1.3); }
 .c-num { background: var(--surface-2); color: var(--ink); border: 1px solid var(--line); }
 .c-num:hover { border-color: var(--accent); }
 .c-wide { grid-column: span 2; }
@@ -543,11 +602,17 @@ a { color: var(--accent); }
 .c-op  { background: #F97316; }
 .c-eq  { background: #10B981; }
 .c-eq:hover { box-shadow: 0 0 18px rgba(16, 185, 129, 0.55); }
+.calc-hint {
+  text-align: center;
+  font-size: 0.74rem;
+  color: var(--ink-2);
+  margin-top: 12px;
+}
 .calc-note {
   text-align: center;
   font-size: 0.76rem;
   color: var(--ink-2);
-  margin-top: 12px;
+  margin-top: 4px;
 }
 
 /* ---------- weather ---------- */
@@ -1296,7 +1361,11 @@ a { color: var(--accent); }
         <strong>Junior Developer</strong> with my club, turning ideas into
         things people can actually click, tap, and use.
       </p>
-      <div class="cta-row rise d6">
+      <p class="status rise d6">
+        <span class="status-dot" aria-hidden="true"></span>
+        Open to internships and junior roles
+      </p>
+      <div class="cta-row rise d7">
         <a class="btn btn-solid" href="#projects">
           See my work
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -1424,12 +1493,20 @@ a { color: var(--accent); }
         Try them; the task list and expense tracker even remember your changes after a refresh.
       </p>
 
+      <div class="proj-filters" role="group" aria-label="Filter projects">
+        <button type="button" data-filter="all" class="is-active" aria-pressed="true">All</button>
+        <button type="button" data-filter="apps" aria-pressed="false">Apps</button>
+        <button type="button" data-filter="tools" aria-pressed="false">Tools</button>
+        <button type="button" data-filter="systems" aria-pressed="false">Systems</button>
+        <button type="button" data-filter="practice" aria-pressed="false">Practice</button>
+      </div>
+
       <div class="projects-grid">
 
         <!-- Calculator -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="apps">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>calculator.html</b></div>
-          <div class="demo-body">
+          <div class="demo-body" id="calcDemo" tabindex="0" aria-label="Calculator — use the buttons or your keyboard">
             <h3 class="demo-title">Calculator</h3>
             <div class="calc-screen" id="calcScreen" aria-live="polite">0</div>
             <div class="calc-grid" id="calcPad">
@@ -1453,6 +1530,7 @@ a { color: var(--accent); }
               <button class="cbtn c-num" type="button" data-k=".">.</button>
               <button class="cbtn c-eq"  type="button" data-k="=">=</button>
             </div>
+            <p class="calc-hint">Tip: click the calculator and type — Enter solves, Backspace deletes.</p>
             <p class="calc-note">Made with ♥ by Cyrus Daniel Madriaga</p>
           </div>
           <div class="proj-foot">
@@ -1465,11 +1543,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/calculator/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/calculator" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Weather -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="apps">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>weather.html</b></div>
           <div class="demo-body">
             <div class="w-app">
@@ -1510,11 +1598,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/weather/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/weather" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Grade Tracker -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="systems">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>grade-tracker.js</b></div>
           <div class="demo-body">
             <h3 class="demo-title">Grade Tracker</h3>
@@ -1543,11 +1641,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/grade-tracker/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/grade-tracker" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Attendance -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="systems">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>attendance-system.js</b></div>
           <div class="demo-body">
             <h3 class="demo-title">Club Attendance</h3>
@@ -1567,11 +1675,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/club-attendance/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/club-attendance" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Study Timer -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="tools">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>study-timer.js</b></div>
           <div class="demo-body" id="timerDemo" data-focus="25" data-break="5">
             <h3 class="demo-title">Study Timer</h3>
@@ -1600,11 +1718,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">SVG</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/study-timer/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/study-timer" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Task Manager -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="tools">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>task-manager.js</b></div>
           <div class="demo-body" id="taskDemo">
             <h3 class="demo-title">Task Manager</h3>
@@ -1632,11 +1760,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">localStorage</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/task-manager/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/task-manager" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Web Dev Quiz -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="practice">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>web-quiz.js</b></div>
           <div class="demo-body" id="quizDemo">
             <h3 class="demo-title">Web Dev Quiz</h3>
@@ -1657,11 +1795,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/web-dev-quiz/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/web-dev-quiz" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Typing Speed Test -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="practice">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>typing-test.js</b></div>
           <div class="demo-body" id="typeDemo" data-time="30">
             <h3 class="demo-title">Typing Speed Test</h3>
@@ -1683,11 +1831,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/typing-test/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/typing-test" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Password Generator -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="tools">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>password-generator.js</b></div>
           <div class="demo-body" id="pwDemo">
             <h3 class="demo-title">Password Generator</h3>
@@ -1719,11 +1877,21 @@ a { color: var(--accent); }
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Web Crypto</span>
             </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/password-generator/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/password-generator" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
           </div>
         </article>
 
         <!-- Expense Tracker -->
-        <article class="proj" data-reveal>
+        <article class="proj" data-reveal data-cat="systems">
           <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>expense-tracker.js</b></div>
           <div class="demo-body" id="exDemo">
             <h3 class="demo-title">Expense Tracker</h3>
@@ -1751,6 +1919,16 @@ a { color: var(--accent); }
             </p>
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">localStorage</span>
+            </div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/expense-tracker/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/expense-tracker" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
             </div>
           </div>
         </article>
@@ -1853,10 +2031,12 @@ a { color: var(--accent); }
 (function () {
   const root = document.documentElement;
   const btn = document.getElementById("themeToggle");
+  const meta = document.querySelector('meta[name="theme-color"]');
 
   function label() {
     const goingTo = root.dataset.theme === "dark" ? "light" : "dark";
     btn.setAttribute("aria-label", "Switch to " + goingTo + " theme");
+    if (meta) meta.setAttribute("content", root.dataset.theme === "dark" ? "#070B14" : "#E8F0FA");
   }
   label();
 
@@ -1866,6 +2046,18 @@ a { color: var(--accent); }
     try { localStorage.setItem("cdm-theme", next); } catch (e) {}
     label();
   });
+
+  // follow the system theme until the visitor makes an explicit choice
+  const media = window.matchMedia("(prefers-color-scheme: light)");
+  function followSystem(e) {
+    let saved = null;
+    try { saved = localStorage.getItem("cdm-theme"); } catch (err) {}
+    if (saved) return;
+    root.dataset.theme = e.matches ? "light" : "dark";
+    label();
+  }
+  if (media.addEventListener) media.addEventListener("change", followSystem);
+  else if (media.addListener) media.addListener(followSystem);
 })();
 
 /* ============================================================
@@ -1963,11 +2155,37 @@ a { color: var(--accent); }
 })();
 
 /* ============================================================
+   Project filters
+   ============================================================ */
+(function () {
+  const buttons = document.querySelectorAll(".proj-filters button");
+  const cards = document.querySelectorAll(".proj");
+  if (!buttons.length || !cards.length) return;
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const filter = btn.dataset.filter;
+
+      buttons.forEach(function (b) {
+        const on = b === btn;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+
+      cards.forEach(function (card) {
+        card.classList.toggle("hidden", filter !== "all" && card.dataset.cat !== filter);
+      });
+    });
+  });
+})();
+
+/* ============================================================
    Demo 1 — Calculator
    A small expression evaluator with operator precedence.
    No eval(): input is tokenized, then * / % run before + -.
    ============================================================ */
 (function () {
+  const demo = document.getElementById("calcDemo");
   const screen = document.getElementById("calcScreen");
   const pad = document.getElementById("calcPad");
   let expr = "";
@@ -2019,11 +2237,14 @@ a { color: var(--accent); }
     return Math.round(result * 1e10) / 1e10;     // trim floating point noise
   }
 
-  pad.addEventListener("click", function (e) {
-    const key = e.target.closest("button");
-    if (!key) return;
-    const k = key.dataset.k;
+  function flash(k) {
+    const btn = pad.querySelector('[data-k="' + k + '"]');
+    if (!btn) return;
+    btn.classList.add("hit");
+    setTimeout(function () { btn.classList.remove("hit"); }, 130);
+  }
 
+  function press(k) {
     if (k === "AC") {
       expr = "";
     } else if (k === "DEL") {
@@ -2031,13 +2252,35 @@ a { color: var(--accent); }
     } else if (k === "=") {
       const out = evaluate(expr);
       expr = out === null ? "Error" : String(out);
-    } else if (k === "%") {
-      expr += "%";
     } else {
       if (expr === "Error") expr = "";
       expr += k;
     }
     render();
+    flash(k);
+  }
+
+  pad.addEventListener("click", function (e) {
+    const key = e.target.closest("button");
+    if (!key) return;
+    press(key.dataset.k);
+  });
+
+  // keyboard support — focus the calculator, then type
+  const NAMED = { Enter: "=", "=": "=", Backspace: "DEL", Escape: "AC", Delete: "AC" };
+
+  demo.addEventListener("keydown", function (e) {
+    // a focused button already handles Enter and Space by itself
+    if (e.target.closest("button") && (e.key === "Enter" || e.key === " ")) return;
+
+    let k = null;
+    if (/^[0-9.]$/.test(e.key)) k = e.key;
+    else if (e.key.length === 1 && "+-*/%".indexOf(e.key) !== -1) k = e.key;
+    else if (NAMED[e.key]) k = NAMED[e.key];
+
+    if (k === null) return;
+    e.preventDefault();
+    press(k);
   });
 
   render();
