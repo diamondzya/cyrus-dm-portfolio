@@ -1,7 +1,7 @@
 (function () {
   const KEY = "cdm-tasks";
   const SEED = [
-    { text: "Review the club sprint board", done: false },
+    { text: "Review the DONAT sprint board", done: false },
     { text: "Practice JavaScript array methods", done: false },
     { text: "Push portfolio updates to GitHub", done: true }
   ];

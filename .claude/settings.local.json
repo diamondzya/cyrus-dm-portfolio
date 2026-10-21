@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node .build/update-donat.js)",
+      "Bash(node .build/fix-role.js)",
+      "Bash(node .build/gen.js)",
+      "Bash(rtk grep *)",
+      "Bash(rtk read *)",
+      "Bash(cd \"C:/Users/cyrus/OneDrive/Desktop/Portfolio\" && mkdir -p .claude && printf '%s\\\\n' '{\"version\":\"0.0.1\",\"configurations\":[{\"name\":\"portfolio\",\"runtimeExecutable\":\"python\",\"runtimeArgs\":[\"-m\",\"http.server\",\"4173\",\"--directory\",\"C:/Users/cyrus/OneDrive/Desktop/Portfolio\"],\"port\":4173}]}' > .claude/launch.json && cat .claude/launch.json)",
+      "Bash(cd \"C:/Users/cyrus/OneDrive/Desktop/Portfolio\" 2>/dev/null && echo \"PWD: $\\(pwd\\)\" && echo && echo \"=== root ===\" && ls && echo && echo \"=== projects ===\" && ls projects/ && echo && echo \"=== redirect stub ===\" && ls projects/club-attendance/ 2>/dev/null || echo \"\\(no club-attendance folder\\)\" && echo && echo \"=== memory dirs ===\" && ls \"C:/Users/cyrus/.claude/projects/\" 2>/dev/null | grep -i \"portfolio\\\\|server-website\")",
+      "Bash(mkdir -p C:/Users/cyrus/.claude/projects/C--Users-cyrus-OneDrive-Desktop-Portfolio/memory)",
+      "Bash(cp C:/Users/cyrus/.claude/projects/C--Users-cyrus-OneDrive-Desktop-open-mp-server-website/memory/MEMORY.md C:/Users/cyrus/.claude/projects/C--Users-cyrus-OneDrive-Desktop-open-mp-server-website/memory/cyrus-profile.md C:/Users/cyrus/.claude/projects/C--Users-cyrus-OneDrive-Desktop-open-mp-server-website/memory/portfolio-project.md C:/Users/cyrus/.claude/projects/C--Users-cyrus-OneDrive-Desktop-Portfolio/memory/)",
+      "Bash(node -e ' *)",
+      "Bash(node .build/add-projects.js)",
+      "Bash(python -I .build/verify-sql.py)",
+      "Bash(node .build/fix-ttt-key.js)",
+      "Bash(node --check projects/tic-tac-toe/script.js)"
+    ]
+  }
+}

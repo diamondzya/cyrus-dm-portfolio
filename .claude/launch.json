@@ -1,0 +1,1 @@
+{"version":"0.0.1","configurations":[{"name":"portfolio","runtimeExecutable":"python","runtimeArgs":["-m","http.server","4173","--directory","C:/Users/cyrus/OneDrive/Desktop/Portfolio"],"port":4173}]}

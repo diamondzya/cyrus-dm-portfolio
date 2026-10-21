@@ -1,0 +1,163 @@
+/* Java Student Records — a standalone project page by Cyrus Daniel Madriaga
+   Tokens match the portfolio, so the theme carries across. */
+
+:root {
+  --bg: #E8F0FA;
+  --bg-soft: #F6FAFE;
+  --surface: #FFFFFF;
+  --surface-2: #F1F6FC;
+  --ink: #0D1B2E;
+  --ink-2: #46586F;
+  --line: rgba(13, 27, 46, 0.14);
+  --accent: #0369A1;
+  --accent-soft: rgba(3, 105, 161, 0.12);
+  --accent-2: #B45309;
+  --ok: #047857;
+  --ok-soft: rgba(4, 120, 87, 0.14);
+  --bad: #B91C1C;
+  --bad-soft: rgba(185, 28, 28, 0.12);
+  --shadow: 0 18px 44px -24px rgba(13, 27, 46, 0.4);
+  --weather-grad: linear-gradient(135deg, #4FACFE 0%, #00C6FB 60%, #00F2FE 100%);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #070B14;
+  --bg-soft: #0B1220;
+  --surface: #0E1729;
+  --surface-2: #131F36;
+  --ink: #E7EEF9;
+  --ink-2: #96A8C2;
+  --line: rgba(231, 238, 249, 0.13);
+  --accent: #38BDF8;
+  --accent-soft: rgba(56, 189, 248, 0.14);
+  --accent-2: #FBBF24;
+  --ok: #34D399;
+  --ok-soft: rgba(52, 211, 153, 0.14);
+  --bad: #F87171;
+  --bad-soft: rgba(248, 113, 113, 0.14);
+  --shadow: 0 26px 55px -30px rgba(0, 0, 0, 0.85);
+  --weather-grad: linear-gradient(135deg, #0B2545 0%, #10406E 55%, #1565A8 100%);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, select { font: inherit; color: inherit; }
+a { color: var(--accent); }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+::selection { background: var(--accent); color: var(--bg); }
+
+.mono { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace; }
+
+/* ---------- page chrome ---------- */
+.page-bar {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 22px clamp(18px, 4vw, 28px) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.page-back:hover { color: var(--accent); }
+.page-back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.theme-toggle {
+  width: 40px; height: 40px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.theme-toggle:hover { border-color: var(--accent); transform: translateY(-1px); }
+.theme-toggle svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.i-sun { display: none; }
+[data-theme="dark"] .i-sun { display: block; }
+[data-theme="dark"] .i-moon { display: none; }
+
+.page { max-width: 660px; margin: 0 auto; padding: clamp(26px, 5vw, 44px) clamp(18px, 4vw, 28px) 64px; }
+.page-title { font-size: clamp(1.7rem, 5vw, 2.3rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+.page-lede { color: var(--ink-2); margin: 10px 0 30px; max-width: 62ch; }
+
+.stage {
+  max-width: 520px;
+  margin-inline: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(18px, 4vw, 26px);
+  box-shadow: var(--shadow);
+}
+.stage-wide { max-width: 640px; }
+
+.page-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px 20px;
+  margin-top: 30px;
+  font-size: 0.82rem;
+  color: var(--ink-2);
+}
+.page-foot a { color: var(--accent); text-decoration: none; }
+.page-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.demo-title { text-align: center; font-size: 1.02rem; font-weight: 600; margin-bottom: 12px; color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- project styles ---------- */
+
+/* ---------- code viewer ---------- */
+.code-view {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0A1120;
+  overflow: hidden;
+}
+pre.code {
+  margin: 0;
+  padding: 15px 16px;
+  overflow: auto;
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: #D7E2F2;
+  tab-size: 4;
+}
+pre.code code { font-family: inherit; white-space: pre; }
+.tok-c { color: #6E7F99; font-style: italic; }
+.tok-p { color: #F2A0C0; }
+.tok-s { color: #9BE38B; }
+.tok-n { color: #F5C87A; }
+.tok-k { color: #5EC8F5; }
+.tok-t { color: #C9A6F5; }

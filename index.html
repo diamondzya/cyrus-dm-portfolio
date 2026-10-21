@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cyrus Daniel Madriaga — Junior Developer</title>
-<meta name="description" content="Portfolio of Cyrus Daniel Madriaga, Junior Developer at Club Mobile App and Web Development. Live demos of apps and systems built with HTML, CSS, and JavaScript.">
+<meta name="description" content="Portfolio of Cyrus Daniel Madriaga — Junior Developer at DONAT and IT Mobile App and Web Development student at STI Ortigas-Cainta. Live demos of apps and systems built with HTML, CSS, and JavaScript.">
 
 <!-- theme before first paint, so there is no flash of the wrong theme -->
 <script>
@@ -1194,6 +1194,217 @@ a { color: var(--accent); }
 .cat-school { background: #A78BFA; }
 .cat-fun { background: #F472B6; }
 
+/* ---------- tic tac toe ---------- */
+.ttt-status {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-height: 1.5em;
+  margin-bottom: 10px;
+}
+.ttt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  max-width: 234px;
+  margin: 0 auto 12px;
+}
+.ttt-cell {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+}
+.ttt-cell:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
+.ttt-cell:disabled { cursor: default; }
+.ttt-cell.x { color: var(--accent); }
+.ttt-cell.o { color: var(--accent-2); }
+.ttt-cell.win { background: var(--ok-soft); border-color: var(--ok); }
+.ttt-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+}
+.ttt-score { font-family: "JetBrains Mono", monospace; }
+.ttt-reset {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 0.78rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.ttt-reset:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- snake ---------- */
+.snake-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  margin-bottom: 8px;
+}
+.snake-top b { font-family: "JetBrains Mono", monospace; color: var(--ink); }
+.snake-wrap {
+  position: relative;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.snake-canvas { display: block; width: 100%; height: auto; }
+.snake-over {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  text-align: center;
+  padding: 18px;
+  background: color-mix(in srgb, var(--surface) 84%, transparent);
+  backdrop-filter: blur(3px);
+}
+.snake-over.show { display: grid; }
+.snake-over b { display: block; font-size: 1.05rem; margin-bottom: 4px; }
+.snake-over span { display: block; font-size: 0.8rem; color: var(--ink-2); margin-bottom: 12px; }
+.snake-start {
+  padding: 9px 20px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.86rem;
+  transition: filter 0.2s ease;
+}
+.snake-start:hover { filter: brightness(1.1); }
+.snake-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 42px);
+  grid-template-rows: repeat(2, 36px);
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+}
+.snake-pad button {
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.snake-pad button:hover { border-color: var(--accent); color: var(--accent); }
+.snake-pad .sp-up { grid-column: 2; }
+.snake-pad .sp-left { grid-column: 1; grid-row: 2; }
+.snake-pad .sp-down { grid-column: 2; grid-row: 2; }
+.snake-pad .sp-right { grid-column: 3; grid-row: 2; }
+
+/* ---------- notes ---------- */
+.notes-form { display: flex; gap: 8px; margin-bottom: 9px; }
+.notes-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  outline: none;
+  font-size: 0.88rem;
+}
+.notes-form input:focus { border-color: var(--accent); }
+.notes-form button {
+  padding: 0 16px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: filter 0.2s ease;
+}
+.notes-form button:hover { filter: brightness(1.1); }
+.notes-search {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 11px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  outline: none;
+  font-size: 0.84rem;
+  margin-bottom: 10px;
+}
+.notes-search:focus { border-color: var(--accent); }
+.notes-list { list-style: none; min-height: 176px; display: grid; gap: 8px; align-content: start; }
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.note-text { flex: 1; font-size: 0.86rem; overflow-wrap: anywhere; }
+.note-time { display: block; font-size: 0.68rem; color: var(--ink-2); margin-top: 3px; }
+.note-del {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 8px;
+  color: var(--ink-2);
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.note-del:hover { background: var(--bad-soft); color: var(--bad); }
+.note-del svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+.notes-empty { text-align: center; color: var(--ink-2); font-size: 0.85rem; padding: 28px 0; }
+.notes-foot { display: flex; justify-content: space-between; gap: 10px; font-size: 0.74rem; color: var(--ink-2); margin-top: 10px; }
+
+/* ---------- code viewer ---------- */
+.code-view {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0A1120;
+  overflow: hidden;
+}
+pre.code {
+  margin: 0;
+  padding: 15px 16px;
+  overflow: auto;
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: #D7E2F2;
+  tab-size: 4;
+}
+pre.code code { font-family: inherit; white-space: pre; }
+.tok-c { color: #6E7F99; font-style: italic; }
+.tok-p { color: #F2A0C0; }
+.tok-s { color: #9BE38B; }
+.tok-n { color: #F5C87A; }
+.tok-k { color: #5EC8F5; }
+.tok-t { color: #C9A6F5; }
+
+/* ---------- portfolio-only ---------- */
+/* clips the code preview inside a card; never matches on a project page */
+.proj .code-view { position: relative; max-height: 300px; }
+.proj .code-view::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, #0A1120);
+  pointer-events: none;
+}
+
 /* ============================================================
    Skills
    ============================================================ */
@@ -1354,12 +1565,13 @@ a { color: var(--accent); }
       <h1 class="name rise d2">Cyrus Daniel Madriaga</h1>
       <p class="prompt mono rise d3">cyrus@portfolio:~$ whoami</p>
       <p class="typed-line mono rise d4" aria-hidden="true"><span id="typed"></span></p>
-      <span class="sr-only">Junior developer at Club Mobile App and Web Development.</span>
+      <span class="sr-only">Junior developer at DONAT, the Developers of Next Advanced Technology, and IT Mobile App and Web Development student at STI Ortigas-Cainta.</span>
       <p class="lede rise d5">
         I started writing code in <strong>Grade 7</strong> and never stopped.
-        Today I build responsive web and mobile experiences as a
-        <strong>Junior Developer</strong> with my club, turning ideas into
-        things people can actually click, tap, and use.
+        I'm studying <strong>IT Mobile App and Web Development</strong> at
+        <strong>STI Ortigas-Cainta</strong>, and I build responsive web and mobile
+        experiences as a <strong>Junior Developer</strong> at <strong>DONAT</strong>,
+        turning ideas into things people can actually click, tap, and use.
       </p>
       <p class="status rise d6">
         <span class="status-dot" aria-hidden="true"></span>
@@ -1401,9 +1613,10 @@ a { color: var(--accent); }
             layouts, smooth interactions, and interfaces that feel good to use.
           </p>
           <p>
-            Today I'm a Junior Developer at the <strong>Club Mobile App and Web Development</strong>, where I
-            build alongside other student developers and learn what it means to ship real projects
-            as a team. I'm still early in my journey — and that's exactly what makes it exciting.
+            Today I'm a Junior Developer at <strong>DONAT</strong>, where I build alongside other
+            student developers and learn what it means to ship real projects as a team. I'm studying
+            the <strong>IT MAWD</strong> strand at <strong>STI Ortigas-Cainta</strong>, and I'm still
+            early in my journey — which is exactly what makes it exciting.
           </p>
         </div>
 
@@ -1414,11 +1627,15 @@ a { color: var(--accent); }
           </div>
           <div class="fact">
             <dt>Club</dt>
-            <dd>Mobile App and Web Development</dd>
+            <dd>DONAT (Developers of Next Advanced Technology)</dd>
           </div>
           <div class="fact">
-            <dt>Focus</dt>
-            <dd>Web &amp; mobile interfaces</dd>
+            <dt>School</dt>
+            <dd>STI Ortigas-Cainta</dd>
+          </div>
+          <div class="fact">
+            <dt>Strand</dt>
+            <dd>IT Mobile App and Web Development (IT MAWD)</dd>
           </div>
           <div class="fact">
             <dt>Stack</dt>
@@ -1465,17 +1682,18 @@ a { color: var(--accent); }
           <span class="tl-when">Grade 12</span>
           <h3 class="tl-title">Shipping real apps</h3>
           <p class="tl-text">
-            Started finishing what I started: a full calculator, a weather app, and other mini
-            projects. Shifted my focus to clean, responsive interfaces that work on any screen.
+            Deep into the IT Mobile App and Web Development strand at STI Ortigas-Cainta, I started
+            finishing what I started: a full calculator, a weather app, and other mini projects,
+            with a focus on clean, responsive interfaces that work on any screen.
           </p>
         </article>
 
         <article class="tl-item" data-reveal>
           <span class="tl-when">Today</span>
-          <h3 class="tl-title">Junior Developer at the Club</h3>
+          <h3 class="tl-title">Junior Developer at DONAT</h3>
           <p class="tl-text">
-            Now contributing to real projects with the Club Mobile App and Web Development team —
-            writing code with others, reviewing, iterating, and learning what it takes to build
+            Now building with DONAT — the Developers of Next Advanced Technology — writing code with
+            other student developers, reviewing, iterating, and learning what it takes to ship
             software as a team.
           </p>
         </article>
@@ -1489,16 +1707,18 @@ a { color: var(--accent); }
       <p class="kicker">// projects</p>
       <h2 class="sec-title" id="projectsTitle">Things I&rsquo;ve built</h2>
       <p class="sec-lede">
-        These aren&rsquo;t screenshots — every app below is running live, right here on this page.
-        Try them; the task list and expense tracker even remember your changes after a refresh.
+        These aren&rsquo;t screenshots — the web apps below run live, right here on this page.
+        Four more are written in Java, C++, SQL, and Pawn, with their full source on the page.
       </p>
 
       <div class="proj-filters" role="group" aria-label="Filter projects">
         <button type="button" data-filter="all" class="is-active" aria-pressed="true">All</button>
         <button type="button" data-filter="apps" aria-pressed="false">Apps</button>
         <button type="button" data-filter="tools" aria-pressed="false">Tools</button>
+        <button type="button" data-filter="games" aria-pressed="false">Games</button>
         <button type="button" data-filter="systems" aria-pressed="false">Systems</button>
         <button type="button" data-filter="practice" aria-pressed="false">Practice</button>
+        <button type="button" data-filter="code" aria-pressed="false">Code</button>
       </div>
 
       <div class="projects-grid">
@@ -1654,11 +1874,11 @@ a { color: var(--accent); }
           </div>
         </article>
 
-        <!-- Attendance -->
+        <!-- DONAT Attendance -->
         <article class="proj" data-reveal data-cat="systems">
-          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>attendance-system.js</b></div>
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>donat-attendance.js</b></div>
           <div class="demo-body">
-            <h3 class="demo-title">Club Attendance</h3>
+            <h3 class="demo-title">DONAT Attendance</h3>
             <div class="a-stats">
               <span class="a-count" id="aCount">0/0 <em>present</em></span>
               <div class="a-bar"><div class="a-fill" id="aFill"></div></div>
@@ -1669,18 +1889,18 @@ a { color: var(--accent); }
           <div class="proj-foot">
             <h3>Who showed up today</h3>
             <p>
-              A meeting check-in tool for club sessions: tap a member to toggle present or
+              A meeting check-in tool for DONAT sessions: tap a member to toggle present or
               absent, and the attendance bar updates in real time.
             </p>
             <div class="chips">
               <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
             </div>
             <div class="proj-links">
-              <a class="proj-link" href="projects/club-attendance/index.html" target="_blank" rel="noopener">
+              <a class="proj-link" href="projects/donat-attendance/index.html" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
                 Open project
               </a>
-              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/club-attendance" target="_blank" rel="noopener">
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/donat-attendance" target="_blank" rel="noopener">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
                 View code
               </a>
@@ -1933,6 +2153,731 @@ a { color: var(--accent); }
           </div>
         </article>
 
+        <!-- Tic-Tac-Toe -->
+        <article class="proj" data-reveal data-cat="games">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>tic-tac-toe.js</b></div>
+          <div class="demo-body" id="tttDemo">
+            <h3 class="demo-title">Tic-Tac-Toe</h3>
+            <p class="ttt-status" id="tttStatus">Your turn — you play X.</p>
+            <div class="ttt-grid" id="tttGrid">
+              <button class="ttt-cell" type="button" aria-label="Cell 1"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 2"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 3"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 4"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 5"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 6"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 7"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 8"></button>
+              <button class="ttt-cell" type="button" aria-label="Cell 9"></button>
+            </div>
+            <div class="ttt-foot">
+              <span class="ttt-score" id="tttScore">W 0 · L 0 · D 0</span>
+              <button class="ttt-reset" id="tttReset" type="button">New game</button>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>You against a minimax AI</h3>
+            <p>
+              Play X against an opponent that searches the game tree before every move.
+              It&rsquo;s hard to beat — but not impossible. The scoreboard keeps your wins,
+              losses, and draws.
+            </p>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Minimax</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/tic-tac-toe/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/tic-tac-toe" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Snake -->
+        <article class="proj" data-reveal data-cat="games">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>snake.js</b></div>
+          <div class="demo-body" id="snakeDemo" tabindex="0" aria-label="Snake — steer with the arrow keys, WASD, or the buttons below">
+            <h3 class="demo-title">Snake</h3>
+            <div class="snake-top">
+              <span>Score <b id="snakeScore">0</b></span>
+              <span>Best <b id="snakeBest">0</b></span>
+            </div>
+            <div class="snake-wrap">
+              <canvas class="snake-canvas" id="snakeCanvas" width="300" height="300"></canvas>
+              <div class="snake-over show" id="snakeOver">
+                <div>
+                  <b id="snakeOverTitle">Snake</b>
+                  <span id="snakeOverText">Arrow keys, WASD, or the buttons below.</span>
+                  <button class="snake-start" id="snakeStart" type="button">Start game</button>
+                </div>
+              </div>
+            </div>
+            <div class="snake-pad">
+              <button class="sp-up" type="button" data-dir="up" aria-label="Up">&#9650;</button>
+              <button class="sp-left" type="button" data-dir="left" aria-label="Left">&#9664;</button>
+              <button class="sp-down" type="button" data-dir="down" aria-label="Down">&#9660;</button>
+              <button class="sp-right" type="button" data-dir="right" aria-label="Right">&#9654;</button>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>The classic, on canvas</h3>
+            <p>
+              Steer with the arrow keys, WASD, or the on-screen pad. Eat, grow, and don&rsquo;t
+              bite yourself — your best score is saved in
+              <span class="mono">localStorage</span>.
+            </p>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Canvas</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/snake/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/snake" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Notes -->
+        <article class="proj" data-reveal data-cat="tools">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>notes.js</b></div>
+          <div class="demo-body" id="notesDemo">
+            <h3 class="demo-title">Notes</h3>
+            <form class="notes-form" id="notesForm" autocomplete="off">
+              <input type="text" id="notesInput" placeholder="Write a note…" aria-label="New note" required>
+              <button type="submit">Add</button>
+            </form>
+            <input class="notes-search" type="search" id="notesSearch" placeholder="Search notes…" aria-label="Search notes">
+            <ul class="notes-list" id="notesList"></ul>
+            <div class="notes-foot">
+              <span id="notesCount">0 notes</span>
+              <span>Saved in your browser</span>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>Quick notes that stick</h3>
+            <p>
+              Jot something down, search across your notes, and delete what you don&rsquo;t need.
+              Everything lives in <span class="mono">localStorage</span>, so it&rsquo;s still here
+              after a refresh.
+            </p>
+            <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">localStorage</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/notes/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/notes" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Java Student Records -->
+        <article class="proj" data-reveal data-cat="code">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>StudentRecords.java</b></div>
+          <div class="demo-body">
+            <div class="code-view">
+<pre class="code"><code><span class="tok-k">import</span> java.util.<span class="tok-t">ArrayList</span>;
+<span class="tok-k">import</span> java.util.<span class="tok-t">Comparator</span>;
+<span class="tok-k">import</span> java.util.<span class="tok-t">List</span>;
+
+<span class="tok-c">/**
+ * StudentRecords — a small console grade book.
+ *
+ * Keeps a class list, averages each student's grades, ranks the class from
+ * highest to lowest, and reports how many passed. The passing mark is 75,
+ * the Philippine standard.
+ *
+ * Build and run:
+ *   javac StudentRecords.java
+ *   java StudentRecords
+ */</span>
+<span class="tok-k">public</span> <span class="tok-k">class</span> <span class="tok-t">StudentRecords</span> {
+
+    <span class="tok-c">/** Passing mark used by Philippine schools. */</span>
+    <span class="tok-k">static</span> <span class="tok-k">final</span> <span class="tok-k">int</span> <span class="tok-t">PASSING</span> = <span class="tok-n">75</span>;
+
+    <span class="tok-c">/** One student and their grades. */</span>
+    <span class="tok-k">static</span> <span class="tok-k">class</span> <span class="tok-t">Student</span> {
+        <span class="tok-k">private</span> <span class="tok-k">final</span> <span class="tok-t">String</span> name;
+        <span class="tok-k">private</span> <span class="tok-k">final</span> <span class="tok-t">String</span> section;
+        <span class="tok-k">private</span> <span class="tok-k">final</span> <span class="tok-t">List</span>&lt;<span class="tok-t">Integer</span>&gt; grades = <span class="tok-k">new</span> <span class="tok-t">ArrayList</span>&lt;&gt;();
+
+        <span class="tok-t">Student</span>(<span class="tok-t">String</span> name, <span class="tok-t">String</span> section) {
+            <span class="tok-k">this</span>.name = name;
+            <span class="tok-k">this</span>.section = section;
+        }
+
+        <span class="tok-k">void</span> addGrade(<span class="tok-k">int</span> grade) {
+            <span class="tok-k">if</span> (grade &lt; <span class="tok-n">0</span> || grade &gt; <span class="tok-n">100</span>) {
+                <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-t">IllegalArgumentException</span>(<span class="tok-s">"grade out of range: "</span> + grade);
+            }
+            grades.add(grade);
+        }
+
+        <span class="tok-k">double</span> average() {
+            <span class="tok-k">return</span> grades.stream().mapToInt(<span class="tok-t">Integer</span>::intValue).average().orElse(<span class="tok-n">0</span>);
+        }
+
+        <span class="tok-k">boolean</span> passed() {
+            <span class="tok-k">return</span> average() &gt;= <span class="tok-t">PASSING</span>;
+        }
+
+        <span class="tok-t">String</span> row() {
+            <span class="tok-k">return</span> <span class="tok-t">String</span>.format(<span class="tok-s">"%-18s %-9s %7.2f   %s"</span>,
+                    name, section, average(), passed() ? <span class="tok-s">"Passed"</span> : <span class="tok-s">"Failed"</span>);
+        }
+    }
+
+    <span class="tok-k">static</span> <span class="tok-t">Student</span> student(<span class="tok-t">String</span> name, <span class="tok-t">String</span> section, <span class="tok-k">int</span>... grades) {
+        <span class="tok-t">Student</span> s = <span class="tok-k">new</span> <span class="tok-t">Student</span>(name, section);
+        <span class="tok-k">for</span> (<span class="tok-k">int</span> grade : grades) {
+            s.addGrade(grade);
+        }
+        <span class="tok-k">return</span> s;
+    }
+
+    <span class="tok-k">public</span> <span class="tok-k">static</span> <span class="tok-k">void</span> main(<span class="tok-t">String</span>[] args) {
+        <span class="tok-t">List</span>&lt;<span class="tok-t">Student</span>&gt; classList = <span class="tok-k">new</span> <span class="tok-t">ArrayList</span>&lt;&gt;(<span class="tok-t">List</span>.of(
+                student(<span class="tok-s">"Cyrus Madriaga"</span>, <span class="tok-s">"IT MAWD"</span>, <span class="tok-n">92</span>, <span class="tok-n">88</span>, <span class="tok-n">85</span>),
+                student(<span class="tok-s">"Andrea Santos"</span>, <span class="tok-s">"IT MAWD"</span>, <span class="tok-n">79</span>, <span class="tok-n">84</span>, <span class="tok-n">90</span>),
+                student(<span class="tok-s">"Miguel Reyes"</span>, <span class="tok-s">"IT MAWD"</span>, <span class="tok-n">71</span>, <span class="tok-n">68</span>, <span class="tok-n">74</span>)
+        ));
+
+        classList.sort(<span class="tok-t">Comparator</span>.comparingDouble(<span class="tok-t">Student</span>::average).reversed());
+
+        <span class="tok-t">System</span>.out.println(<span class="tok-s">"RANK  "</span> + <span class="tok-t">String</span>.format(<span class="tok-s">"%-18s %-9s %7s   %s"</span>,
+                <span class="tok-s">"NAME"</span>, <span class="tok-s">"SECTION"</span>, <span class="tok-s">"AVERAGE"</span>, <span class="tok-s">"STATUS"</span>));
+        <span class="tok-t">System</span>.out.println(<span class="tok-s">"-"</span>.repeat(<span class="tok-n">56</span>));
+
+        <span class="tok-k">for</span> (<span class="tok-k">int</span> i = <span class="tok-n">0</span>; i &lt; classList.size(); i++) {
+            <span class="tok-t">System</span>.out.printf(<span class="tok-s">"%-5d %s%n"</span>, i + <span class="tok-n">1</span>, classList.get(i).row());
+        }
+
+        <span class="tok-k">long</span> passed = classList.stream().filter(<span class="tok-t">Student</span>::passed).count();
+        <span class="tok-t">System</span>.out.printf(<span class="tok-s">"%n%d of %d students passed.%n"</span>, passed, classList.size());
+    }
+}</code></pre>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>A console grade book in Java</h3>
+            <p>
+              A small OOP exercise: a <span class="mono">Student</span> class that averages grades, ranks the class with a comparator, and prints a summary table. The passing mark is 75, Philippine-style.
+            </p>
+            <div class="chips"><span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Collections</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/java-student-records/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/java-student-records" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- C++ Library System -->
+        <article class="proj" data-reveal data-cat="code">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>Library.cpp</b></div>
+          <div class="demo-body">
+            <div class="code-view">
+<pre class="code"><code><span class="tok-c">// Library.cpp — a small library catalogue that survives between runs.</span>
+<span class="tok-c">//</span>
+<span class="tok-c">// A console menu for adding, searching, borrowing, and returning books.</span>
+<span class="tok-c">// The catalogue is saved to library.txt, so it is still there next time.</span>
+<span class="tok-c">//</span>
+<span class="tok-c">// Build and run:</span>
+<span class="tok-c">//   g++ -std=c++17 -O2 -o library Library.cpp</span>
+<span class="tok-c">//   ./library</span>
+
+<span class="tok-p">#include</span> &lt;algorithm&gt;
+<span class="tok-p">#include</span> &lt;cctype&gt;
+<span class="tok-p">#include</span> &lt;fstream&gt;
+<span class="tok-p">#include</span> &lt;iomanip&gt;
+<span class="tok-p">#include</span> &lt;iostream&gt;
+<span class="tok-p">#include</span> &lt;sstream&gt;
+<span class="tok-p">#include</span> &lt;<span class="tok-k">string</span>&gt;
+<span class="tok-p">#include</span> &lt;<span class="tok-k">vector</span>&gt;
+
+<span class="tok-k">struct</span> <span class="tok-t">Book</span> {
+    <span class="tok-k">int</span> id = <span class="tok-n">0</span>;
+    <span class="tok-k">std</span>::<span class="tok-k">string</span> title;
+    <span class="tok-k">std</span>::<span class="tok-k">string</span> author;
+    <span class="tok-k">bool</span> borrowed = <span class="tok-k">false</span>;
+};
+
+<span class="tok-k">static</span> <span class="tok-k">std</span>::<span class="tok-k">vector</span>&lt;<span class="tok-t">Book</span>&gt; catalogue;
+<span class="tok-k">static</span> <span class="tok-k">int</span> nextId = <span class="tok-n">1</span>;
+
+<span class="tok-k">static</span> <span class="tok-k">std</span>::<span class="tok-k">string</span> lower(<span class="tok-k">std</span>::<span class="tok-k">string</span> text) {
+    <span class="tok-k">std</span>::<span class="tok-k">transform</span>(text.begin(), text.end(), text.begin(),
+                   [](<span class="tok-k">unsigned</span> <span class="tok-k">char</span> c) { <span class="tok-k">return</span> <span class="tok-k">std</span>::<span class="tok-k">tolower</span>(c); });
+    <span class="tok-k">return</span> text;
+}
+
+<span class="tok-k">static</span> <span class="tok-t">Book</span>* findBook(<span class="tok-k">int</span> id) {
+    <span class="tok-k">for</span> (<span class="tok-t">Book</span>&amp; book : catalogue) {
+        <span class="tok-k">if</span> (book.id == id) {
+            <span class="tok-k">return</span> &amp;book;
+        }
+    }
+    <span class="tok-k">return</span> <span class="tok-k">nullptr</span>;
+}
+
+<span class="tok-k">static</span> <span class="tok-k">void</span> addBook(<span class="tok-k">const</span> <span class="tok-k">std</span>::<span class="tok-k">string</span>&amp; title, <span class="tok-k">const</span> <span class="tok-k">std</span>::<span class="tok-k">string</span>&amp; author) {
+    catalogue.push_back(<span class="tok-t">Book</span>{nextId++, title, author, <span class="tok-k">false</span>});
+    <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"Added #"</span> &lt;&lt; catalogue.back().id &lt;&lt; <span class="tok-s">"  "</span> &lt;&lt; title &lt;&lt; <span class="tok-s">"\n"</span>;
+}
+
+<span class="tok-k">static</span> <span class="tok-k">void</span> listBooks() {
+    <span class="tok-k">if</span> (catalogue.empty()) {
+        <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"(the catalogue is empty)\n"</span>;
+        <span class="tok-k">return</span>;
+    }
+    <span class="tok-k">for</span> (<span class="tok-k">const</span> <span class="tok-t">Book</span>&amp; book : catalogue) {
+        <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-k">std</span>::setw(<span class="tok-n">3</span>) &lt;&lt; book.id &lt;&lt; <span class="tok-s">"  "</span>
+                  &lt;&lt; (book.borrowed ? <span class="tok-s">"[out]"</span> : <span class="tok-s">"[in] "</span>) &lt;&lt; <span class="tok-s">"  "</span>
+                  &lt;&lt; book.title &lt;&lt; <span class="tok-s">"  -  "</span> &lt;&lt; book.author &lt;&lt; <span class="tok-s">"\n"</span>;
+    }
+}
+
+<span class="tok-k">static</span> <span class="tok-k">void</span> search(<span class="tok-k">const</span> <span class="tok-k">std</span>::<span class="tok-k">string</span>&amp; term) {
+    <span class="tok-k">const</span> <span class="tok-k">std</span>::<span class="tok-k">string</span> needle = lower(term);
+    <span class="tok-k">int</span> found = <span class="tok-n">0</span>;
+    <span class="tok-k">for</span> (<span class="tok-k">const</span> <span class="tok-t">Book</span>&amp; book : catalogue) {
+        <span class="tok-k">if</span> (lower(book.title).find(needle) != <span class="tok-k">std</span>::<span class="tok-k">string</span>::npos) {
+            <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"#"</span> &lt;&lt; book.id &lt;&lt; <span class="tok-s">"  "</span> &lt;&lt; book.title
+                      &lt;&lt; <span class="tok-s">"  ("</span> &lt;&lt; (book.borrowed ? <span class="tok-s">"borrowed"</span> : <span class="tok-s">"available"</span>) &lt;&lt; <span class="tok-s">")\n"</span>;
+            ++found;
+        }
+    }
+    <span class="tok-k">if</span> (found == <span class="tok-n">0</span>) {
+        <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"No books match \""</span> &lt;&lt; term &lt;&lt; <span class="tok-s">"\".\n"</span>;
+    }
+}
+
+<span class="tok-k">static</span> <span class="tok-k">void</span> setBorrowed(<span class="tok-k">int</span> id, <span class="tok-k">bool</span> borrowed) {
+    <span class="tok-t">Book</span>* book = findBook(id);
+    <span class="tok-k">if</span> (book == <span class="tok-k">nullptr</span>) {
+        <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"No book with id "</span> &lt;&lt; id &lt;&lt; <span class="tok-s">".\n"</span>;
+        <span class="tok-k">return</span>;
+    }
+    book-&gt;borrowed = borrowed;
+    <span class="tok-k">std</span>::cout &lt;&lt; (borrowed ? <span class="tok-s">"Borrowed: "</span> : <span class="tok-s">"Returned: "</span>) &lt;&lt; book-&gt;title &lt;&lt; <span class="tok-s">"\n"</span>;
+}
+
+<span class="tok-k">static</span> <span class="tok-k">void</span> save() {
+    <span class="tok-k">std</span>::<span class="tok-k">ofstream</span> out(<span class="tok-s">"library.txt"</span>);
+    <span class="tok-k">for</span> (<span class="tok-k">const</span> <span class="tok-t">Book</span>&amp; book : catalogue) {
+        out &lt;&lt; book.id &lt;&lt; <span class="tok-s">'|'</span> &lt;&lt; book.title &lt;&lt; <span class="tok-s">'|'</span> &lt;&lt; book.author
+            &lt;&lt; <span class="tok-s">'|'</span> &lt;&lt; (book.borrowed ? <span class="tok-n">1</span> : <span class="tok-n">0</span>) &lt;&lt; <span class="tok-s">'\n'</span>;
+    }
+    <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"Saved "</span> &lt;&lt; catalogue.size() &lt;&lt; <span class="tok-s">" book(s) to library.txt\n"</span>;
+}
+
+<span class="tok-k">static</span> <span class="tok-k">void</span> load() {
+    <span class="tok-k">std</span>::<span class="tok-k">ifstream</span> in(<span class="tok-s">"library.txt"</span>);
+    <span class="tok-k">std</span>::<span class="tok-k">string</span> line;
+    <span class="tok-k">while</span> (<span class="tok-k">std</span>::getline(in, line)) {
+        <span class="tok-k">std</span>::<span class="tok-k">istringstream</span> row(line);
+        <span class="tok-k">std</span>::<span class="tok-k">string</span> id, title, author, borrowed;
+        <span class="tok-k">std</span>::getline(row, id, <span class="tok-s">'|'</span>);
+        <span class="tok-k">std</span>::getline(row, title, <span class="tok-s">'|'</span>);
+        <span class="tok-k">std</span>::getline(row, author, <span class="tok-s">'|'</span>);
+        <span class="tok-k">std</span>::getline(row, borrowed, <span class="tok-s">'|'</span>);
+        <span class="tok-k">if</span> (id.empty()) {
+            <span class="tok-k">continue</span>;
+        }
+        <span class="tok-t">Book</span> book;
+        book.id = <span class="tok-k">std</span>::stoi(id);
+        book.title = title;
+        book.author = author;
+        book.borrowed = (borrowed == <span class="tok-s">"1"</span>);
+        catalogue.push_back(book);
+        nextId = <span class="tok-k">std</span>::<span class="tok-k">max</span>(nextId, book.id + <span class="tok-n">1</span>);
+    }
+}
+
+<span class="tok-k">int</span> main() {
+    load();
+    <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"Library ready - "</span> &lt;&lt; catalogue.size() &lt;&lt; <span class="tok-s">" book(s) loaded.\n"</span>
+              &lt;&lt; <span class="tok-s">"Commands: add, list, search, borrow, return, save, quit\n"</span>;
+
+    <span class="tok-k">std</span>::<span class="tok-k">string</span> command;
+    <span class="tok-k">while</span> (<span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"&gt; "</span> &amp;&amp; <span class="tok-k">std</span>::cin &gt;&gt; command) {
+        <span class="tok-k">if</span> (command == <span class="tok-s">"quit"</span>) {
+            <span class="tok-k">break</span>;
+        } <span class="tok-k">else</span> <span class="tok-k">if</span> (command == <span class="tok-s">"add"</span>) {
+            <span class="tok-k">std</span>::<span class="tok-k">string</span> title, author;
+            <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"title: "</span>;
+            <span class="tok-k">std</span>::cin.ignore();
+            <span class="tok-k">std</span>::getline(<span class="tok-k">std</span>::cin, title);
+            <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"author: "</span>;
+            <span class="tok-k">std</span>::getline(<span class="tok-k">std</span>::cin, author);
+            addBook(title, author);
+        } <span class="tok-k">else</span> <span class="tok-k">if</span> (command == <span class="tok-s">"list"</span>) {
+            listBooks();
+        } <span class="tok-k">else</span> <span class="tok-k">if</span> (command == <span class="tok-s">"search"</span>) {
+            <span class="tok-k">std</span>::<span class="tok-k">string</span> term;
+            <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"term: "</span>;
+            <span class="tok-k">std</span>::cin &gt;&gt; term;
+            search(term);
+        } <span class="tok-k">else</span> <span class="tok-k">if</span> (command == <span class="tok-s">"borrow"</span> || command == <span class="tok-s">"return"</span>) {
+            <span class="tok-k">int</span> id = <span class="tok-n">0</span>;
+            <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"id: "</span>;
+            <span class="tok-k">std</span>::cin &gt;&gt; id;
+            setBorrowed(id, command == <span class="tok-s">"borrow"</span>);
+        } <span class="tok-k">else</span> <span class="tok-k">if</span> (command == <span class="tok-s">"save"</span>) {
+            save();
+        } <span class="tok-k">else</span> {
+            <span class="tok-k">std</span>::cout &lt;&lt; <span class="tok-s">"Unknown command. Try: add, list, search, borrow, return, save, quit\n"</span>;
+        }
+    }
+
+    save();
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}</code></pre>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>A library system in C++</h3>
+            <p>
+              Add, search, borrow, and return books from a console menu. Structs, vectors, and file I/O keep the catalogue alive between runs.
+            </p>
+            <div class="chips"><span class="chip">C++</span><span class="chip">STL</span><span class="chip">File I/O</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/cpp-library-system/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/cpp-library-system" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- SQL Player Database -->
+        <article class="proj" data-reveal data-cat="code">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>players.sql</b></div>
+          <div class="demo-body">
+            <div class="code-view">
+<pre class="code"><code><span class="tok-c">-- players.sql — the database behind a multiplayer roleplay server.</span>
+<span class="tok-c">--</span>
+<span class="tok-c">-- The schema the game server and its website share: accounts, factions,</span>
+<span class="tok-c">-- membership ranks, and bans — plus the queries they run most.</span>
+
+<span class="tok-k">CREATE</span> <span class="tok-k">TABLE</span> <span class="tok-t">factions</span> (
+  <span class="tok-t">id</span>         <span class="tok-k">INT</span> <span class="tok-k">UNSIGNED</span> <span class="tok-k">AUTO_INCREMENT</span> <span class="tok-k">PRIMARY</span> <span class="tok-k">KEY</span>,
+  <span class="tok-t">name</span>       <span class="tok-k">VARCHAR</span>(<span class="tok-n">32</span>)  <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">UNIQUE</span>,
+  <span class="tok-t">tag</span>        <span class="tok-k">VARCHAR</span>(<span class="tok-n">8</span>)   <span class="tok-k">NOT</span> <span class="tok-k">NULL</span>,
+  <span class="tok-t">created_at</span> <span class="tok-k">DATETIME</span>     <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">DEFAULT</span> <span class="tok-k">CURRENT_TIMESTAMP</span>
+) <span class="tok-k">ENGINE</span> = <span class="tok-k">InnoDB</span>;
+
+<span class="tok-k">CREATE</span> <span class="tok-k">TABLE</span> <span class="tok-t">players</span> (
+  <span class="tok-t">id</span>            <span class="tok-k">INT</span> <span class="tok-k">UNSIGNED</span>  <span class="tok-k">AUTO_INCREMENT</span> <span class="tok-k">PRIMARY</span> <span class="tok-k">KEY</span>,
+  <span class="tok-t">username</span>      <span class="tok-k">VARCHAR</span>(<span class="tok-n">24</span>)   <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">UNIQUE</span>,
+  <span class="tok-t">password_hash</span> <span class="tok-k">CHAR</span>(<span class="tok-n">60</span>)      <span class="tok-k">NOT</span> <span class="tok-k">NULL</span>,
+  <span class="tok-t">faction_id</span>    <span class="tok-k">INT</span> <span class="tok-k">UNSIGNED</span>  <span class="tok-k">NULL</span>,
+  <span class="tok-t">rank</span>          <span class="tok-k">TINYINT</span>       <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">DEFAULT</span> <span class="tok-n">0</span>,
+  <span class="tok-t">hours_played</span>  <span class="tok-k">DECIMAL</span>(<span class="tok-n">8</span>, <span class="tok-n">2</span>) <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">DEFAULT</span> <span class="tok-n">0</span>,
+  <span class="tok-t">created_at</span>    <span class="tok-k">DATETIME</span>      <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">DEFAULT</span> <span class="tok-k">CURRENT_TIMESTAMP</span>,
+  <span class="tok-t">last_seen</span>     <span class="tok-k">DATETIME</span>      <span class="tok-k">NULL</span>,
+  <span class="tok-k">CONSTRAINT</span> <span class="tok-t">fk_players_faction</span>
+    <span class="tok-k">FOREIGN</span> <span class="tok-k">KEY</span> (<span class="tok-t">faction_id</span>) <span class="tok-k">REFERENCES</span> <span class="tok-t">factions</span> (<span class="tok-t">id</span>)
+    <span class="tok-k">ON</span> <span class="tok-k">DELETE</span> <span class="tok-k">SET</span> <span class="tok-k">NULL</span>
+) <span class="tok-k">ENGINE</span> = <span class="tok-k">InnoDB</span>;
+
+<span class="tok-k">CREATE</span> <span class="tok-k">TABLE</span> <span class="tok-t">bans</span> (
+  <span class="tok-t">id</span>         <span class="tok-k">INT</span> <span class="tok-k">UNSIGNED</span> <span class="tok-k">AUTO_INCREMENT</span> <span class="tok-k">PRIMARY</span> <span class="tok-k">KEY</span>,
+  <span class="tok-t">player_id</span>  <span class="tok-k">INT</span> <span class="tok-k">UNSIGNED</span> <span class="tok-k">NOT</span> <span class="tok-k">NULL</span>,
+  <span class="tok-t">reason</span>     <span class="tok-k">VARCHAR</span>(<span class="tok-n">120</span>) <span class="tok-k">NOT</span> <span class="tok-k">NULL</span>,
+  <span class="tok-t">admin_id</span>   <span class="tok-k">INT</span> <span class="tok-k">UNSIGNED</span> <span class="tok-k">NULL</span>,
+  <span class="tok-t">created_at</span> <span class="tok-k">DATETIME</span>     <span class="tok-k">NOT</span> <span class="tok-k">NULL</span> <span class="tok-k">DEFAULT</span> <span class="tok-k">CURRENT_TIMESTAMP</span>,
+  <span class="tok-t">expires_at</span> <span class="tok-k">DATETIME</span>     <span class="tok-k">NULL</span>,
+  <span class="tok-k">CONSTRAINT</span> <span class="tok-t">fk_bans_player</span>
+    <span class="tok-k">FOREIGN</span> <span class="tok-k">KEY</span> (<span class="tok-t">player_id</span>) <span class="tok-k">REFERENCES</span> <span class="tok-t">players</span> (<span class="tok-t">id</span>)
+    <span class="tok-k">ON</span> <span class="tok-k">DELETE</span> <span class="tok-k">CASCADE</span>
+) <span class="tok-k">ENGINE</span> = <span class="tok-k">InnoDB</span>;
+
+<span class="tok-k">CREATE</span> <span class="tok-k">INDEX</span> <span class="tok-t">idx_players_hours</span> <span class="tok-k">ON</span> <span class="tok-t">players</span> (<span class="tok-t">hours_played</span> <span class="tok-k">DESC</span>);
+<span class="tok-k">CREATE</span> <span class="tok-k">INDEX</span> <span class="tok-t">idx_bans_expires</span> <span class="tok-k">ON</span> <span class="tok-t">bans</span> (<span class="tok-t">expires_at</span>);
+
+<span class="tok-c">-- Sample rows, so the queries below have something to chew on.</span>
+<span class="tok-k">INSERT</span> <span class="tok-k">INTO</span> <span class="tok-t">factions</span> (<span class="tok-t">name</span>, <span class="tok-t">tag</span>) <span class="tok-k">VALUES</span>
+  (<span class="tok-s">'Manila Police'</span>, <span class="tok-s">'MPD'</span>), (<span class="tok-s">'Cebu Medics'</span>, <span class="tok-s">'CMD'</span>), (<span class="tok-s">'Batangas Riders'</span>, <span class="tok-s">'BTR'</span>);
+
+<span class="tok-k">INSERT</span> <span class="tok-k">INTO</span> <span class="tok-t">players</span> (<span class="tok-t">username</span>, <span class="tok-t">password_hash</span>, <span class="tok-t">faction_id</span>, <span class="tok-t">rank</span>, <span class="tok-t">hours_played</span>) <span class="tok-k">VALUES</span>
+  (<span class="tok-s">'cyrus'</span>,    <span class="tok-s">'$2y$10$abcdefghijklmnopqrstuv'</span>, <span class="tok-n">1</span>, <span class="tok-n">3</span>, <span class="tok-n">412.50</span>),
+  (<span class="tok-s">'andrea'</span>,   <span class="tok-s">'$2y$10$abcdefghijklmnopqrstuv'</span>, <span class="tok-n">1</span>, <span class="tok-n">2</span>, <span class="tok-n">288.25</span>),
+  (<span class="tok-s">'miguel'</span>,   <span class="tok-s">'$2y$10$abcdefghijklmnopqrstuv'</span>, <span class="tok-n">2</span>, <span class="tok-n">1</span>,  <span class="tok-n">96.00</span>),
+  (<span class="tok-s">'bianca'</span>,   <span class="tok-s">'$2y$10$abcdefghijklmnopqrstuv'</span>, <span class="tok-k">NULL</span>, <span class="tok-n">0</span>, <span class="tok-n">154.75</span>),
+  (<span class="tok-s">'paolo'</span>,    <span class="tok-s">'$2y$10$abcdefghijklmnopqrstuv'</span>, <span class="tok-n">3</span>, <span class="tok-n">1</span>,  <span class="tok-n">61.50</span>);
+
+<span class="tok-k">INSERT</span> <span class="tok-k">INTO</span> <span class="tok-t">bans</span> (<span class="tok-t">player_id</span>, <span class="tok-t">reason</span>, <span class="tok-t">admin_id</span>, <span class="tok-t">expires_at</span>) <span class="tok-k">VALUES</span>
+  (<span class="tok-n">5</span>, <span class="tok-s">'Spawn killing'</span>, <span class="tok-n">1</span>, <span class="tok-s">'2026-12-01 00:00:00'</span>),
+  (<span class="tok-n">3</span>, <span class="tok-s">'Bug abuse'</span>,     <span class="tok-n">1</span>, <span class="tok-k">NULL</span>);
+
+<span class="tok-c">-- 1. Leaderboard: the ten players with the most hours in-game.</span>
+<span class="tok-k">SELECT</span> <span class="tok-t">username</span>, <span class="tok-t">hours_played</span>
+<span class="tok-k">FROM</span> <span class="tok-t">players</span>
+<span class="tok-k">ORDER</span> <span class="tok-k">BY</span> <span class="tok-t">hours_played</span> <span class="tok-k">DESC</span>
+<span class="tok-k">LIMIT</span> <span class="tok-n">10</span>;
+
+<span class="tok-c">-- 2. Faction roster, highest rank first.</span>
+<span class="tok-k">SELECT</span> <span class="tok-t">f</span>.<span class="tok-t">name</span> <span class="tok-k">AS</span> <span class="tok-t">faction</span>, <span class="tok-t">p</span>.<span class="tok-t">username</span>, <span class="tok-t">p</span>.<span class="tok-t">rank</span>, <span class="tok-t">p</span>.<span class="tok-t">hours_played</span>
+<span class="tok-k">FROM</span> <span class="tok-t">players</span> <span class="tok-k">AS</span> <span class="tok-t">p</span>
+<span class="tok-k">JOIN</span> <span class="tok-t">factions</span> <span class="tok-k">AS</span> <span class="tok-t">f</span> <span class="tok-k">ON</span> <span class="tok-t">f</span>.<span class="tok-t">id</span> = <span class="tok-t">p</span>.<span class="tok-t">faction_id</span>
+<span class="tok-k">WHERE</span> <span class="tok-t">f</span>.<span class="tok-t">id</span> = <span class="tok-n">1</span>
+<span class="tok-k">ORDER</span> <span class="tok-k">BY</span> <span class="tok-t">p</span>.<span class="tok-t">rank</span> <span class="tok-k">DESC</span>, <span class="tok-t">p</span>.<span class="tok-t">hours_played</span> <span class="tok-k">DESC</span>;
+
+<span class="tok-c">-- 3. Every ban that is still active (NULL expiry means permanent).</span>
+<span class="tok-k">SELECT</span> <span class="tok-t">p</span>.<span class="tok-t">username</span>, <span class="tok-t">b</span>.<span class="tok-t">reason</span>, <span class="tok-t">b</span>.<span class="tok-t">expires_at</span>
+<span class="tok-k">FROM</span> <span class="tok-t">bans</span> <span class="tok-k">AS</span> <span class="tok-t">b</span>
+<span class="tok-k">JOIN</span> <span class="tok-t">players</span> <span class="tok-k">AS</span> <span class="tok-t">p</span> <span class="tok-k">ON</span> <span class="tok-t">p</span>.<span class="tok-t">id</span> = <span class="tok-t">b</span>.<span class="tok-t">player_id</span>
+<span class="tok-k">WHERE</span> <span class="tok-t">b</span>.<span class="tok-t">expires_at</span> <span class="tok-k">IS</span> <span class="tok-k">NULL</span> <span class="tok-k">OR</span> <span class="tok-t">b</span>.<span class="tok-t">expires_at</span> &<span class="tok-t">gt</span>; <span class="tok-k">NOW</span>()
+<span class="tok-k">ORDER</span> <span class="tok-k">BY</span> <span class="tok-t">b</span>.<span class="tok-t">created_at</span> <span class="tok-k">DESC</span>;
+
+<span class="tok-c">-- 4. Faction sizes and average activity, biggest first.</span>
+<span class="tok-k">SELECT</span> <span class="tok-t">f</span>.<span class="tok-t">name</span>,
+       <span class="tok-k">COUNT</span>(<span class="tok-t">p</span>.<span class="tok-t">id</span>) <span class="tok-k">AS</span> <span class="tok-t">members</span>,
+       <span class="tok-k">ROUND</span>(<span class="tok-k">AVG</span>(<span class="tok-t">p</span>.<span class="tok-t">hours_played</span>), <span class="tok-n">1</span>) <span class="tok-k">AS</span> <span class="tok-t">avg_hours</span>
+<span class="tok-k">FROM</span> <span class="tok-t">factions</span> <span class="tok-k">AS</span> <span class="tok-t">f</span>
+<span class="tok-k">LEFT</span> <span class="tok-k">JOIN</span> <span class="tok-t">players</span> <span class="tok-k">AS</span> <span class="tok-t">p</span> <span class="tok-k">ON</span> <span class="tok-t">p</span>.<span class="tok-t">faction_id</span> = <span class="tok-t">f</span>.<span class="tok-t">id</span>
+<span class="tok-k">GROUP</span> <span class="tok-k">BY</span> <span class="tok-t">f</span>.<span class="tok-t">id</span>, <span class="tok-t">f</span>.<span class="tok-t">name</span>
+<span class="tok-k">ORDER</span> <span class="tok-k">BY</span> <span class="tok-t">members</span> <span class="tok-k">DESC</span>;
+
+<span class="tok-c">-- 5. Promote veterans: unaffiliated players with 100+ hours join the</span>
+<span class="tok-c">--    default faction at rank 1.</span>
+<span class="tok-k">UPDATE</span> <span class="tok-t">players</span>
+<span class="tok-k">SET</span> <span class="tok-t">faction_id</span> = <span class="tok-n">1</span>, <span class="tok-t">rank</span> = <span class="tok-n">1</span>
+<span class="tok-k">WHERE</span> <span class="tok-t">faction_id</span> <span class="tok-k">IS</span> <span class="tok-k">NULL</span> <span class="tok-k">AND</span> <span class="tok-t">hours_played</span> &<span class="tok-t">gt</span>;= <span class="tok-n">100</span>;</code></pre>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>The database behind a game server</h3>
+            <p>
+              Schema and queries for a multiplayer roleplay server: accounts, factions, ranks, and bans — with joins and aggregates for leaderboards and rosters.
+            </p>
+            <div class="chips"><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">Schema design</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/sql-player-database/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/sql-player-database" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Pawn Faction System -->
+        <article class="proj" data-reveal data-cat="code">
+          <div class="demo-bar" aria-hidden="true"><i></i><i></i><i></i><b>factions.pwn</b></div>
+          <div class="demo-body">
+            <div class="code-view">
+<pre class="code"><code><span class="tok-c">// factions.pwn — a faction system for a roleplay server.</span>
+<span class="tok-c">//</span>
+<span class="tok-c">// Written in Pawn, the scripting language behind SA-MP and open.mp</span>
+<span class="tok-c">// servers. Players create factions, invite others, set ranks, and the</span>
+<span class="tok-c">// membership list is saved to a file so it survives a restart.</span>
+<span class="tok-c">//</span>
+<span class="tok-c">// Compile with the Pawn compiler (pawncc) against a_samp / open.mp.</span>
+
+<span class="tok-p">#include</span> &lt;a_samp&gt;
+
+<span class="tok-p">#define</span> <span class="tok-t">MAX_FACTIONS</span>     (<span class="tok-n">32</span>)
+<span class="tok-p">#define</span> <span class="tok-t">FACTION_NAME_LEN</span> (<span class="tok-n">24</span>)
+<span class="tok-p">#define</span> <span class="tok-t">FACTION_FILE</span>     <span class="tok-s">"factions.txt"</span>
+
+<span class="tok-c">// faction ranks</span>
+<span class="tok-p">#define</span> <span class="tok-t">RANK_MEMBER</span>      (<span class="tok-n">1</span>)
+<span class="tok-p">#define</span> <span class="tok-t">RANK_OFFICER</span>     (<span class="tok-n">2</span>)
+<span class="tok-p">#define</span> <span class="tok-t">RANK_LEADER</span>      (<span class="tok-n">3</span>)
+
+<span class="tok-k">enum</span> e_FACTION {
+    fName[<span class="tok-t">FACTION_NAME_LEN</span>],
+    fLeader,
+    <span class="tok-k">bool</span>:fUsed
+}
+
+<span class="tok-k">new</span> <span class="tok-t">Faction</span>[<span class="tok-t">MAX_FACTIONS</span>][e_FACTION];
+<span class="tok-k">new</span> <span class="tok-t">PlayerFaction</span>[<span class="tok-t">MAX_PLAYERS</span>];
+<span class="tok-k">new</span> <span class="tok-t">PlayerRank</span>[<span class="tok-t">MAX_PLAYERS</span>];
+
+<span class="tok-k">stock</span> <span class="tok-t">FactionRankName</span>(rank, dest[], len = <span class="tok-k">sizeof</span> dest) {
+    <span class="tok-k">switch</span> (rank) {
+        <span class="tok-k">case</span> <span class="tok-t">RANK_LEADER</span>:  format(dest, len, <span class="tok-s">"Leader"</span>);
+        <span class="tok-k">case</span> <span class="tok-t">RANK_OFFICER</span>: format(dest, len, <span class="tok-s">"Officer"</span>);
+        <span class="tok-k">default</span>:           format(dest, len, <span class="tok-s">"Member"</span>);
+    }
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}
+
+<span class="tok-k">stock</span> <span class="tok-t">FactionCreate</span>(<span class="tok-k">const</span> name[], leaderid) {
+    <span class="tok-k">if</span> (strlen(name) &lt; <span class="tok-n">3</span>) {
+        <span class="tok-k">return</span> <span class="tok-n">0</span>;
+    }
+    <span class="tok-k">for</span> (<span class="tok-k">new</span> i = <span class="tok-n">1</span>; i &lt; <span class="tok-t">MAX_FACTIONS</span>; i++) {
+        <span class="tok-k">if</span> (!<span class="tok-t">Faction</span>[i][fUsed]) {
+            format(<span class="tok-t">Faction</span>[i][fName], <span class="tok-t">FACTION_NAME_LEN</span>, <span class="tok-s">"%s"</span>, name);
+            <span class="tok-t">Faction</span>[i][fLeader] = leaderid;
+            <span class="tok-t">Faction</span>[i][fUsed] = <span class="tok-k">true</span>;
+
+            <span class="tok-t">PlayerFaction</span>[leaderid] = i;
+            <span class="tok-t">PlayerRank</span>[leaderid] = <span class="tok-t">RANK_LEADER</span>;
+            <span class="tok-k">return</span> i;
+        }
+    }
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}
+
+<span class="tok-k">stock</span> <span class="tok-t">FactionAnnounce</span>(factionid, <span class="tok-k">const</span> message[], color) {
+    <span class="tok-k">for</span> (<span class="tok-k">new</span> i = <span class="tok-n">0</span>; i &lt; <span class="tok-t">MAX_PLAYERS</span>; i++) {
+        <span class="tok-k">if</span> (<span class="tok-t">IsPlayerConnected</span>(i) &amp;&amp; <span class="tok-t">PlayerFaction</span>[i] == factionid) {
+            <span class="tok-t">SendClientMessage</span>(i, color, message);
+        }
+    }
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}
+
+<span class="tok-k">stock</span> <span class="tok-t">FactionAdd</span>(playerid, factionid, rank) {
+    <span class="tok-t">PlayerFaction</span>[playerid] = factionid;
+    <span class="tok-t">PlayerRank</span>[playerid] = rank;
+
+    <span class="tok-k">new</span> name[<span class="tok-t">MAX_PLAYER_NAME</span>], message[<span class="tok-n">128</span>];
+    <span class="tok-t">GetPlayerName</span>(playerid, name, <span class="tok-k">sizeof</span> name);
+    format(message, <span class="tok-k">sizeof</span> message, <span class="tok-s">"%s joined the faction."</span>, name);
+    <span class="tok-t">FactionAnnounce</span>(factionid, message, 0x9BE38BFF);
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}
+
+<span class="tok-k">stock</span> <span class="tok-t">FactionRemove</span>(playerid) {
+    <span class="tok-k">new</span> factionid = <span class="tok-t">PlayerFaction</span>[playerid];
+    <span class="tok-k">if</span> (!factionid) {
+        <span class="tok-k">return</span> <span class="tok-n">0</span>;
+    }
+    <span class="tok-t">PlayerFaction</span>[playerid] = <span class="tok-n">0</span>;
+    <span class="tok-t">PlayerRank</span>[playerid] = <span class="tok-n">0</span>;
+
+    <span class="tok-k">new</span> name[<span class="tok-t">MAX_PLAYER_NAME</span>], message[<span class="tok-n">128</span>];
+    <span class="tok-t">GetPlayerName</span>(playerid, name, <span class="tok-k">sizeof</span> name);
+    format(message, <span class="tok-k">sizeof</span> message, <span class="tok-s">"%s left the faction."</span>, name);
+    <span class="tok-t">FactionAnnounce</span>(factionid, message, 0xF87171FF);
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}
+
+<span class="tok-k">stock</span> <span class="tok-t">FactionSave</span>() {
+    <span class="tok-k">new</span> <span class="tok-t">File</span>:handle = fopen(<span class="tok-t">FACTION_FILE</span>, io_write);
+    <span class="tok-k">if</span> (!handle) {
+        <span class="tok-k">return</span> <span class="tok-n">0</span>;
+    }
+    <span class="tok-k">for</span> (<span class="tok-k">new</span> i = <span class="tok-n">1</span>; i &lt; <span class="tok-t">MAX_FACTIONS</span>; i++) {
+        <span class="tok-k">if</span> (<span class="tok-t">Faction</span>[i][fUsed]) {
+            <span class="tok-k">new</span> line[<span class="tok-n">128</span>];
+            format(line, <span class="tok-k">sizeof</span> line, <span class="tok-s">"%d|%s|%d\n"</span>, i, <span class="tok-t">Faction</span>[i][fName], <span class="tok-t">Faction</span>[i][fLeader]);
+            fwrite(handle, line);
+        }
+    }
+    fclose(handle);
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}
+
+<span class="tok-k">public</span> <span class="tok-t">OnPlayerCommandText</span>(playerid, cmdtext[]) {
+    <span class="tok-k">if</span> (!strcmp(cmdtext, <span class="tok-s">"/fcreate "</span>, <span class="tok-k">true</span>, <span class="tok-n">9</span>)) {
+        <span class="tok-k">new</span> name[<span class="tok-t">FACTION_NAME_LEN</span>];
+        strmid(name, cmdtext, <span class="tok-n">9</span>, strlen(cmdtext), <span class="tok-t">FACTION_NAME_LEN</span>);
+
+        <span class="tok-k">new</span> id = <span class="tok-t">FactionCreate</span>(name, playerid);
+        <span class="tok-k">if</span> (!id) {
+            <span class="tok-k">return</span> <span class="tok-t">SendClientMessage</span>(playerid, 0xFFAA00FF, <span class="tok-s">"Usage: /fcreate &lt;name&gt; (3+ letters)"</span>);
+        }
+        <span class="tok-t">SendClientMessage</span>(playerid, 0x9BE38BFF, <span class="tok-s">"Faction created. Invite players with /finvite &lt;id&gt;."</span>);
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+
+    <span class="tok-k">if</span> (!strcmp(cmdtext, <span class="tok-s">"/finvite "</span>, <span class="tok-k">true</span>, <span class="tok-n">9</span>)) {
+        <span class="tok-k">if</span> (<span class="tok-t">PlayerRank</span>[playerid] &lt; <span class="tok-t">RANK_OFFICER</span>) {
+            <span class="tok-k">return</span> <span class="tok-t">SendClientMessage</span>(playerid, 0xF87171FF, <span class="tok-s">"Only officers and leaders can invite."</span>);
+        }
+        <span class="tok-k">new</span> targetid = strval(cmdtext[<span class="tok-n">9</span>]);
+        <span class="tok-k">if</span> (!<span class="tok-t">IsPlayerConnected</span>(targetid) || targetid == playerid) {
+            <span class="tok-k">return</span> <span class="tok-t">SendClientMessage</span>(playerid, 0xF87171FF, <span class="tok-s">"That player is not online."</span>);
+        }
+        <span class="tok-t">FactionAdd</span>(targetid, <span class="tok-t">PlayerFaction</span>[playerid], <span class="tok-t">RANK_MEMBER</span>);
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+
+    <span class="tok-k">if</span> (!strcmp(cmdtext, <span class="tok-s">"/fleave"</span>, <span class="tok-k">true</span>)) {
+        <span class="tok-k">if</span> (!<span class="tok-t">FactionRemove</span>(playerid)) {
+            <span class="tok-k">return</span> <span class="tok-t">SendClientMessage</span>(playerid, 0xFFAA00FF, <span class="tok-s">"You are not in a faction."</span>);
+        }
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+
+    <span class="tok-k">if</span> (!strcmp(cmdtext, <span class="tok-s">"/fmembers"</span>, <span class="tok-k">true</span>)) {
+        <span class="tok-k">new</span> factionid = <span class="tok-t">PlayerFaction</span>[playerid];
+        <span class="tok-k">if</span> (!factionid) {
+            <span class="tok-k">return</span> <span class="tok-t">SendClientMessage</span>(playerid, 0xFFAA00FF, <span class="tok-s">"You are not in a faction."</span>);
+        }
+
+        <span class="tok-k">new</span> header[<span class="tok-n">64</span>], line[<span class="tok-n">128</span>], rank[<span class="tok-n">16</span>], name[<span class="tok-t">MAX_PLAYER_NAME</span>];
+        format(header, <span class="tok-k">sizeof</span> header, <span class="tok-s">"-- %s --"</span>, <span class="tok-t">Faction</span>[factionid][fName]);
+        <span class="tok-t">SendClientMessage</span>(playerid, 0x5EC8F5FF, header);
+
+        <span class="tok-k">for</span> (<span class="tok-k">new</span> i = <span class="tok-n">0</span>; i &lt; <span class="tok-t">MAX_PLAYERS</span>; i++) {
+            <span class="tok-k">if</span> (<span class="tok-t">IsPlayerConnected</span>(i) &amp;&amp; <span class="tok-t">PlayerFaction</span>[i] == factionid) {
+                <span class="tok-t">GetPlayerName</span>(i, name, <span class="tok-k">sizeof</span> name);
+                <span class="tok-t">FactionRankName</span>(<span class="tok-t">PlayerRank</span>[i], rank, <span class="tok-k">sizeof</span> rank);
+                format(line, <span class="tok-k">sizeof</span> line, <span class="tok-s">"%s  -  %s"</span>, name, rank);
+                <span class="tok-t">SendClientMessage</span>(playerid, 0xD7E2F2FF, line);
+            }
+        }
+        <span class="tok-k">return</span> <span class="tok-n">1</span>;
+    }
+
+    <span class="tok-k">return</span> <span class="tok-n">0</span>;
+}
+
+<span class="tok-k">public</span> <span class="tok-t">OnPlayerDisconnect</span>(playerid, reason) {
+    <span class="tok-t">FactionSave</span>();
+    <span class="tok-k">return</span> <span class="tok-n">1</span>;
+}</code></pre>
+            </div>
+          </div>
+          <div class="proj-foot">
+            <h3>A faction system in Pawn</h3>
+            <p>
+              Server-side scripting for a roleplay server: create factions, invite players, set ranks, and save membership. Pawn is the language behind SA-MP and open.mp servers.
+            </p>
+            <div class="chips"><span class="chip">Pawn</span><span class="chip">SA-MP / open.mp</span><span class="chip">Game logic</span></div>
+            <div class="proj-links">
+              <a class="proj-link" href="projects/pawn-faction-system/index.html" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
+                Open project
+              </a>
+              <a class="proj-link" href="https://github.com/diamondzya/portfolio/tree/main/projects/pawn-faction-system" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-5 6 5 6"/><path d="m16 6 5 6-5 6"/></svg>
+                View code
+              </a>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
@@ -1943,20 +2888,31 @@ a { color: var(--accent); }
       <p class="kicker">// toolkit</p>
       <h2 class="sec-title" id="skillsTitle">What I work with</h2>
       <p class="sec-lede">
-        The tools I reach for every day, and the ones I&rsquo;m teaching myself next.
+        The languages and tools I build with, and what I&rsquo;m teaching myself next.
       </p>
 
       <div class="skills-grid">
         <div class="skill-col" data-reveal>
-          <h3>Comfortable with</h3>
-          <p>The everyday tools behind every project on this page.</p>
+          <h3>Languages</h3>
+          <p>What I write code in, from web pages to game servers.</p>
           <ul class="skill-list">
             <li class="skill">HTML5</li>
             <li class="skill">CSS3</li>
             <li class="skill">JavaScript</li>
+            <li class="skill">Java</li>
+            <li class="skill">C++</li>
+            <li class="skill">SQL</li>
+            <li class="skill">Pawn</li>
+          </ul>
+        </div>
+
+        <div class="skill-col" data-reveal>
+          <h3>Tools &amp; practices</h3>
+          <p>How I work day to day.</p>
+          <ul class="skill-list">
             <li class="skill">Tailwind CSS</li>
-            <li class="skill">Responsive design</li>
             <li class="skill">Git &amp; GitHub</li>
+            <li class="skill">Responsive design</li>
             <li class="skill">UI design</li>
           </ul>
         </div>
@@ -1999,8 +2955,8 @@ a { color: var(--accent); }
 
         <a class="contact-card" href="#projects">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
-          <b>Club projects</b>
-          <span>Mobile App and Web Development</span>
+          <b>DONAT</b>
+          <span>Developers of Next Advanced Technology</span>
         </a>
       </div>
     </div>
@@ -2093,7 +3049,7 @@ a { color: var(--accent); }
    ============================================================ */
 (function () {
   const el = document.getElementById("typed");
-  const text = "> junior developer, Club Mobile App and Web Development";
+  const text = "> junior developer at DONAT — Developers of Next Advanced Technology";
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (reduced) { el.textContent = text; return; }
@@ -2442,7 +3398,7 @@ a { color: var(--accent); }
 })();
 
 /* ============================================================
-   Demo 4 — Club attendance
+   Demo 4 — DONAT attendance
    ============================================================ */
 (function () {
   const members = [
@@ -2615,7 +3571,7 @@ a { color: var(--accent); }
 (function () {
   const KEY = "cdm-tasks";
   const SEED = [
-    { text: "Review the club sprint board", done: false },
+    { text: "Review the DONAT sprint board", done: false },
     { text: "Practice JavaScript array methods", done: false },
     { text: "Push portfolio updates to GitHub", done: true }
   ];
@@ -3260,6 +4216,425 @@ a { color: var(--accent); }
     save();
     render();
   });
+
+  render();
+})();
+
+/* ============================================================
+   Demo 11 — Tic tac toe
+   The AI searches the game tree with a memoised minimax, but
+   slips now and then so the game stays winnable.
+   ============================================================ */
+(function () {
+  const demo = document.getElementById("tttDemo");
+  if (!demo) return;
+
+  const grid = document.getElementById("tttGrid");
+  const cells = Array.prototype.slice.call(grid.querySelectorAll(".ttt-cell"));
+  const statusEl = document.getElementById("tttStatus");
+  const scoreEl = document.getElementById("tttScore");
+  const resetBtn = document.getElementById("tttReset");
+
+  const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  const memo = new Map();
+
+  let board = new Array(9).fill("");
+  let over = false;
+  let thinking = false;
+  let score = { win: 0, loss: 0, draw: 0 };
+
+  function result(b) {
+    for (let i = 0; i < LINES.length; i++) {
+      const line = LINES[i];
+      const first = b[line[0]];
+      if (first && first === b[line[1]] && first === b[line[2]]) return first;
+    }
+    return b.indexOf("") === -1 ? "draw" : null;
+  }
+
+  function lineFor(b, player) {
+    for (let i = 0; i < LINES.length; i++) {
+      const line = LINES[i];
+      if (b[line[0]] === player && b[line[1]] === player && b[line[2]] === player) return line;
+    }
+    return null;
+  }
+
+  function best(b, player, depth) {
+    const key = b.map(function (c) { return c || "-"; }).join("") + player + depth;
+    if (memo.has(key)) return memo.get(key);
+
+    const done = result(b);
+    if (done === "X") return { score: -10 + depth, move: -1 };
+    if (done === "O") return { score: 10 - depth, move: -1 };
+    if (done === "draw") return { score: 0, move: -1 };
+
+    let bestScore = player === "O" ? -Infinity : Infinity;
+    let bestMove = -1;
+
+    for (let i = 0; i < 9; i++) {
+      if (b[i]) continue;
+      b[i] = player;
+      const reply = best(b, player === "O" ? "X" : "O", depth + 1).score;
+      b[i] = "";
+      if (player === "O" ? reply > bestScore : reply < bestScore) {
+        bestScore = reply;
+        bestMove = i;
+      }
+    }
+
+    const out = { score: bestScore, move: bestMove };
+    memo.set(key, out);
+    return out;
+  }
+
+  function openCells() {
+    const open = [];
+    for (let i = 0; i < 9; i++) {
+      if (!board[i]) open.push(i);
+    }
+    return open;
+  }
+
+  function aiMove() {
+    const open = openCells();
+    if (!open.length) return -1;
+    if (Math.random() < 0.2) {
+      return open[Math.floor(Math.random() * open.length)];
+    }
+    return best(board.slice(), "O", 0).move;
+  }
+
+  function paint(winLine) {
+    cells.forEach(function (cell, i) {
+      cell.textContent = board[i];
+      cell.className = "ttt-cell" + (board[i] ? " " + board[i].toLowerCase() : "") +
+        (winLine && winLine.indexOf(i) !== -1 ? " win" : "");
+      cell.disabled = !!board[i] || over || thinking;
+    });
+  }
+
+  function end(state) {
+    over = true;
+    thinking = false;
+    const winLine = state === "draw" ? null : lineFor(board, state);
+    if (state === "X") { score.win += 1; statusEl.textContent = "You win!"; }
+    else if (state === "O") { score.loss += 1; statusEl.textContent = "The AI takes this one."; }
+    else { score.draw += 1; statusEl.textContent = "Draw — well played."; }
+    scoreEl.textContent = "W " + score.win + " · L " + score.loss + " · D " + score.draw;
+    paint(winLine);
+  }
+
+  function play(index) {
+    if (over || thinking || board[index]) return;
+
+    board[index] = "X";
+    let state = result(board);
+    if (state) return end(state);
+
+    thinking = true;
+    paint();
+    statusEl.textContent = "The AI is thinking…";
+
+    setTimeout(function () {
+      const move = aiMove();
+      if (move >= 0) board[move] = "O";
+      thinking = false;
+      state = result(board);
+      if (state) return end(state);
+      paint();
+      statusEl.textContent = "Your turn — you play X.";
+    }, 260);
+  }
+
+  grid.addEventListener("click", function (e) {
+    const cell = e.target.closest(".ttt-cell");
+    if (cell) play(cells.indexOf(cell));
+  });
+
+  resetBtn.addEventListener("click", function () {
+    board = new Array(9).fill("");
+    over = false;
+    thinking = false;
+    paint();
+    statusEl.textContent = "Your turn — you play X.";
+  });
+
+  paint();
+})();
+
+/* ============================================================
+   Demo 12 — Snake
+   Canvas game loop on a timer, keyboard plus on-screen pad.
+   The best score is kept in localStorage.
+   ============================================================ */
+(function () {
+  const demo = document.getElementById("snakeDemo");
+  if (!demo) return;
+
+  const canvas = document.getElementById("snakeCanvas");
+  const ctx = canvas.getContext("2d");
+  const scoreEl = document.getElementById("snakeScore");
+  const bestEl = document.getElementById("snakeBest");
+  const overEl = document.getElementById("snakeOver");
+  const overTitle = document.getElementById("snakeOverTitle");
+  const overText = document.getElementById("snakeOverText");
+  const startBtn = document.getElementById("snakeStart");
+
+  const CELL = 20;
+  const COLS = canvas.width / CELL;
+  const ROWS = canvas.height / CELL;
+  const SPEED = 120;
+
+  const SNAKE_COLOR = "#2AA9E0";
+  const HEAD_COLOR = "#1B87B8";
+  const FOOD_COLOR = "#F59E0B";
+
+  let snake, dir, queued, food, score, ticker, running;
+
+  let best = parseInt(localStorage.getItem("cdm-snake-best") || "0", 10) || 0;
+  bestEl.textContent = best;
+
+  function placeFood() {
+    do {
+      food = {
+        x: Math.floor(Math.random() * COLS),
+        y: Math.floor(Math.random() * ROWS)
+      };
+    } while (snake.some(function (part) { return part.x === food.x && part.y === food.y; }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = FOOD_COLOR;
+    ctx.beginPath();
+    ctx.arc(food.x * CELL + CELL / 2, food.y * CELL + CELL / 2, CELL * 0.32, 0, Math.PI * 2);
+    ctx.fill();
+
+    snake.forEach(function (part, i) {
+      ctx.fillStyle = i === 0 ? HEAD_COLOR : SNAKE_COLOR;
+      const x = part.x * CELL + 2;
+      const y = part.y * CELL + 2;
+      const size = CELL - 4;
+      if (ctx.roundRect) {
+        ctx.beginPath();
+        ctx.roundRect(x, y, size, size, 5);
+        ctx.fill();
+      } else {
+        ctx.fillRect(x, y, size, size);
+      }
+    });
+  }
+
+  function reset() {
+    snake = [{ x: 7, y: 7 }, { x: 6, y: 7 }, { x: 5, y: 7 }];
+    dir = { x: 1, y: 0 };
+    queued = [];
+    score = 0;
+    scoreEl.textContent = "0";
+    placeFood();
+    draw();
+  }
+
+  function stop() {
+    if (ticker) { clearInterval(ticker); ticker = null; }
+    running = false;
+  }
+
+  function die() {
+    stop();
+    overTitle.textContent = "Game over";
+    overText.textContent = "You scored " + score + ".";
+    startBtn.textContent = "Play again";
+    overEl.classList.add("show");
+  }
+
+  function step() {
+    if (queued.length) dir = queued.shift();
+
+    const head = { x: snake[0].x + dir.x, y: snake[0].y + dir.y };
+
+    if (head.x < 0 || head.y < 0 || head.x >= COLS || head.y >= ROWS) return die();
+    for (let i = 1; i < snake.length; i++) {
+      if (snake[i].x === head.x && snake[i].y === head.y) return die();
+    }
+
+    snake.unshift(head);
+    if (head.x === food.x && head.y === food.y) {
+      score += 1;
+      scoreEl.textContent = score;
+      if (score > best) {
+        best = score;
+        bestEl.textContent = best;
+        try { localStorage.setItem("cdm-snake-best", String(best)); } catch (e) {}
+      }
+      placeFood();
+    } else {
+      snake.pop();
+    }
+    draw();
+  }
+
+  function start() {
+    stop();
+    reset();
+    overEl.classList.remove("show");
+    startBtn.textContent = "Start game";
+    ticker = setInterval(step, SPEED);
+    running = true;
+    demo.focus();
+  }
+
+  function turn(x, y) {
+    const last = queued.length ? queued[queued.length - 1] : dir;
+    if (last.x === -x && last.y === -y) return;
+    if (last.x === x && last.y === y) return;
+    if (queued.length < 2) queued.push({ x: x, y: y });
+  }
+
+  const KEYS = {
+    ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0],
+    w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0],
+    W: [0, -1], S: [0, 1], A: [-1, 0], D: [1, 0]
+  };
+
+  demo.addEventListener("keydown", function (e) {
+    const move = KEYS[e.key];
+    if (!move) return;
+    e.preventDefault();
+    if (running) turn(move[0], move[1]);
+  });
+
+  const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  demo.querySelectorAll(".snake-pad button").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (running) turn(DIRS[btn.dataset.dir][0], DIRS[btn.dataset.dir][1]);
+      demo.focus();
+    });
+  });
+
+  startBtn.addEventListener("click", start);
+
+  reset();
+})();
+
+/* ============================================================
+   Demo 13 — Notes
+   Quick notes saved in localStorage, with search.
+   ============================================================ */
+(function () {
+  const form = document.getElementById("notesForm");
+  if (!form) return;
+
+  const KEY = "cdm-notes";
+  const input = document.getElementById("notesInput");
+  const search = document.getElementById("notesSearch");
+  const list = document.getElementById("notesList");
+  const countEl = document.getElementById("notesCount");
+
+  const DAY = 86400000;
+  const SEED = [
+    { id: 1, text: "Review the DONAT sprint board before Friday", at: Date.now() - 2 * DAY },
+    { id: 2, text: "Practice Java collections for the quiz", at: Date.now() - DAY },
+    { id: 3, text: "Push the portfolio updates to GitHub", at: Date.now() - 3600000 }
+  ];
+
+  let notes = load();
+  let nextId = notes.reduce(function (max, note) { return Math.max(max, note.id); }, 0) + 1;
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return SEED.slice();
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        return parsed
+          .filter(function (n) { return n && typeof n.text === "string"; })
+          .map(function (n) {
+            return { id: Number(n.id) || 0, text: n.text, at: Number(n.at) || Date.now() };
+          });
+      }
+    } catch (e) {}
+    return SEED.slice();
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(notes)); } catch (e) {}
+  }
+
+  function when(at) {
+    const mins = Math.floor((Date.now() - at) / 60000);
+    if (mins < 1) return "just now";
+    if (mins < 60) return mins + "m ago";
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return hours + "h ago";
+    const days = Math.floor(hours / 24);
+    return days === 1 ? "yesterday" : days + "d ago";
+  }
+
+  function render() {
+    const term = search.value.trim().toLowerCase();
+    const shown = term
+      ? notes.filter(function (n) { return n.text.toLowerCase().indexOf(term) !== -1; })
+      : notes;
+
+    list.innerHTML = "";
+
+    if (!shown.length) {
+      const empty = document.createElement("li");
+      empty.className = "notes-empty";
+      empty.textContent = notes.length === 0
+        ? "No notes yet — write your first one above."
+        : "No notes match that search.";
+      list.appendChild(empty);
+    }
+
+    shown.slice().reverse().forEach(function (note) {
+      const item = document.createElement("li");
+      item.className = "note";
+
+      const text = document.createElement("span");
+      text.className = "note-text";
+      text.textContent = note.text;
+
+      const time = document.createElement("span");
+      time.className = "note-time";
+      time.textContent = when(note.at);
+      text.appendChild(time);
+
+      const del = document.createElement("button");
+      del.type = "button";
+      del.className = "note-del";
+      del.setAttribute("aria-label", "Delete note: " + note.text);
+      del.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+      del.addEventListener("click", function () {
+        notes = notes.filter(function (n) { return n.id !== note.id; });
+        save();
+        render();
+      });
+
+      item.append(text, del);
+      list.appendChild(item);
+    });
+
+    countEl.textContent = term
+      ? shown.length + " of " + notes.length + " notes"
+      : (notes.length === 1 ? "1 note" : notes.length + " notes");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    notes.push({ id: nextId++, text: text, at: Date.now() });
+    input.value = "";
+    save();
+    render();
+    input.focus();
+  });
+
+  search.addEventListener("input", render);
 
   render();
 })();
